@@ -1,4 +1,4 @@
-export class Planet implements IPlanet{
+export class Planet implements IPlanet {
     name?: string;
     orderFromSun?: number;
     hasRings?: boolean;
