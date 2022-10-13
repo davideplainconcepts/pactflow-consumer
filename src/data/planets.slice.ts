@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Planet, IPlanet} from "../../core/entitities/planet.entity";
-import { PlanetRepository } from "../repository/planet.repository";
+import { Planet, IPlanet} from "../core/entitities/planet.entity";
+import { IPlanetModel } from "../core/model/planet.model";
 
 
 type initialStateType = {
@@ -16,7 +16,7 @@ const initialState: initialStateType = {
 export const getAllPlanets = createAsyncThunk(
   "planets/getAll",
   async (_, thunkAPI) => {
-    const response = await (thunkAPI.extra as PlanetRepository).getAll();
+    const response = await (thunkAPI.extra as IPlanetModel).getAll();
     return response;
   }
 );
@@ -24,7 +24,7 @@ export const getAllPlanets = createAsyncThunk(
 export const getPlanet = createAsyncThunk(
   "planets/getAll",
   async (orderFromSun: number, thunkAPI) => {
-    const response = await (thunkAPI.extra as PlanetRepository).get(orderFromSun);
+    const response = await (thunkAPI.extra as IPlanetModel).get(orderFromSun);
     return response;
   }
 );

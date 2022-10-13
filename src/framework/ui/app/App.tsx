@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch } from '../../../app/hooks';
 import './App.scss';
-import { useUseCases } from '../../../data/redux/useUseCases';
+import { useUseCases } from '../../../data/useUseCases';
 
 function App() {
   const dispatch = useAppDispatch();

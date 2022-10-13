@@ -1,13 +1,13 @@
-import { Planet } from "../../core/entitities/planet.entity";
+import { Planet } from "../entitities/planet.entity";
 
-export interface PlanetRepository {
+export interface IPlanetModel {
   getAll(): Promise<Planet[]>;
   get(orderFromSun: number): Promise<Planet>;
 }
 
-export const PlanetRepositoryImpl = (
+export const PlanetModel = (
   baseURL: string = "localhost:3000"
-): PlanetRepository => {
+): IPlanetModel => {
   return {
     getAll: async () =>
       await fetch(`${baseURL}/planets`).then((result) => result.json()),
