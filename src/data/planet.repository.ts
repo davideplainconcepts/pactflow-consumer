@@ -5,7 +5,7 @@ import { getAllPlanets } from './planets.slice'
 
 
 export interface IPlanetRepository {
-    getAll: () => Promise<unknown>
+    getAll: () => Promise<Planet[]>
 }
 export class PlanetRepository implements IPlanetRepository  {
 
@@ -14,10 +14,9 @@ export class PlanetRepository implements IPlanetRepository  {
     constructor() {
         this.dispatch = store.dispatch as AppThunkDispatch
     }    
-    //@ts-ignore
     async getAll() {
         const response = await this.dispatch(getAllPlanets());
-        return response?.payload ;
+        return response?.payload as Planet[];
     }     
     
 }
