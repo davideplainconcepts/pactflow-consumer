@@ -1,10 +1,10 @@
-import { getAll, IPlanetRepository, PlanetRepository, planetRepository } from "../../data/planet.repository";
+import { IPlanetRepository, PlanetRepository,  } from "../../data/planet.repository";
 import { Planet } from "../entitities/planet.entity";
 
 import { createSelector } from "@reduxjs/toolkit";
 
-const planetRepo: any = new PlanetRepository()
+const planetRepo: IPlanetRepository = new PlanetRepository()
 
-export const getAllPlanetsUseCase: Promise<Planet[]> = () => {
+export const getAllPlanetsUseCase = () => {
    return planetRepo.getAll();
 }

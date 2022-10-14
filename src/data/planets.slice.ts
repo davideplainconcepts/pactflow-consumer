@@ -22,7 +22,7 @@ export const getAllPlanets = createAsyncThunk(
 );
 
 export const getPlanet = createAsyncThunk(
-  "planets/getAll",
+  "planets/get",
   async (orderFromSun: number, thunkAPI) => {
     const response = await (thunkAPI.extra as IPlanetModel).get(orderFromSun);
     return response;
