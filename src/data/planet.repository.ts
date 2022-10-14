@@ -13,12 +13,12 @@ export class PlanetRepository implements IPlanetModel  {
     }    
     async getAll() {
         const response = await this.dispatch(getAllPlanets());
-        return response?.payload as Planet[];
+        return response?.payload;
     }     
 
     async get(orderFromSun: number) {
         const response = await this.dispatch(getPlanet(orderFromSun));
-        return response?.payload as Planet[];
+        return response?.payload;
     }   
     
 }
