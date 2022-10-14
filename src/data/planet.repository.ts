@@ -1,13 +1,10 @@
 import { AnyAction, AsyncThunkAction } from "@reduxjs/toolkit";
 import { AppThunkDispatch, store } from "../app/store";
 import { Planet } from "../core/entitities/planet.entity";
-import { getAllPlanets } from './planets.slice'
+import { IPlanetModel } from "../core/model/planet.model";
+import { getAllPlanets, getPlanet } from './planets.slice'
 
-
-export interface IPlanetRepository {
-    getAll: () => Promise<Planet[]>
-}
-export class PlanetRepository implements IPlanetRepository  {
+export class PlanetRepository implements IPlanetModel  {
 
     private dispatch: AppThunkDispatch;
     
@@ -18,6 +15,11 @@ export class PlanetRepository implements IPlanetRepository  {
         const response = await this.dispatch(getAllPlanets());
         return response?.payload as Planet[];
     }     
+
+    async get(orderFromSun: number) {
+        const response = await this.dispatch(getPlanet(orderFromSun));
+        return response?.payload as Planet[];
+    }   
     
 }
 
