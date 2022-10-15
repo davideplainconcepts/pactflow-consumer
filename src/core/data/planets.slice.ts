@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
-import { Planet, IPlanet} from "../entitities/planet.entity";
+import { Planet } from "../entitities/planet.entity";
 import { IPlanetModel } from "../model/planet.model";
 
 type initialStateType = {

@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectPlanets } from "../../core/data/planets.slice";
 import { useUseCases } from "../../core/useCases/useUseCases.hook"
@@ -7,9 +7,14 @@ import { useUseCases } from "../../core/useCases/useUseCases.hook"
 export const ViewModel = () => {
 
     const { getPlanet, getAllPlanets } = useUseCases();
-    const planets = useSelector(selectPlanets)
+    const planets = useSelector(selectPlanets);
+    const [isMounted, setIsMounted] = useState<boolean>(false);
+
     useEffect(() => {
-        getAllPlanets();
+        if(!isMounted){
+            getAllPlanets();
+            setIsMounted(true)
+        }
     }, [planets.length])
     
     return (
