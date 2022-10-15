@@ -1,26 +1,10 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch } from '../../../app/hooks';
+import { ViewModel } from '../../ViewModel/viewModel';
 import './App.scss';
-import { getAllPlanetsUseCase } from '../../../core/useCases/planet.use-cases';
-import planetsSlice from '../../../data/planets.slice';
 
-function App() {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-
-    const ppp = async () => {
-      const planets = await getAllPlanetsUseCase();
-      console.log(planets)
-    }
-
-   
-    ppp()
-  }, [])
- 
+function App() { 
   return (
     <div className="App">
-     
+      <ViewModel></ViewModel>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
-import planetsSlice from '../data/planets.slice';
+import planetsSlice from '../core/data/planets.slice';
 import { PlanetModel } from '../core/model/planet.model';
 
 export const store = configureStore({

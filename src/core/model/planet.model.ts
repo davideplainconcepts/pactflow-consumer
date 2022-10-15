@@ -1,8 +1,8 @@
 import { Planet } from "../entitities/planet.entity";
 
 export interface IPlanetModel {
-  getAll(): unknown | Promise<Planet[]>;
-  get(orderFromSun: number): unknown | Promise<Planet>;
+  getAll(): Promise<Planet[]>;
+  get(orderFromSun: number): Promise<Planet>;
 }
 
 export const PlanetModel = (

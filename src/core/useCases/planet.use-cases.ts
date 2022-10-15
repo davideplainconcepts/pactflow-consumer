@@ -1,10 +1,20 @@
-import { IPlanetRepository, PlanetRepository,  } from "../../data/planet.repository";
+import { PlanetRepository,  } from "../data/planet.repository";
 import { Planet } from "../entitities/planet.entity";
+import { IPlanetModel } from "../model/planet.model";
 
-import { createSelector } from "@reduxjs/toolkit";
+export class PlanetUseCases implements IPlanetModel {
 
-const planetRepo: IPlanetRepository = new PlanetRepository()
+   private planetRepository: IPlanetModel;
 
-export const getAllPlanetsUseCase = () => {
-   return planetRepo.getAll();
+   constructor(planetRepository: IPlanetModel) {
+      this.planetRepository = planetRepository;
+   }
+
+   async get(orderFromSun: number): Promise<Planet> {
+      return await this.planetRepository.get(orderFromSun);
+   }
+
+   async getAll(): Promise<Planet[]> {
+      return await this.planetRepository.getAll();
+   }
 }

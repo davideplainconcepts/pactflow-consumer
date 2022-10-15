@@ -1,11 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Planet, IPlanet} from "../core/entitities/planet.entity";
-import { IPlanetModel } from "../core/model/planet.model";
-
+import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
+import { Planet, IPlanet} from "../entitities/planet.entity";
+import { IPlanetModel } from "../model/planet.model";
 
 type initialStateType = {
-  planets: IPlanet[] | [],
-  selectedPlanet: IPlanet | null,
+  planets: Planet[],
+  selectedPlanet: Planet | null,
 }
 
 const initialState: initialStateType = {
@@ -16,7 +15,7 @@ const initialState: initialStateType = {
 export const getAllPlanets = createAsyncThunk(
   "planets/getAll",
   async (_, thunkAPI) => {
-    const response = await (thunkAPI.extra as IPlanetModel).getAll();
+    const response = await (await (thunkAPI.extra as IPlanetModel).getAll());
     return response;
   }
 );
@@ -39,10 +38,14 @@ const planetSlice = createSlice({
         state.planets = action.payload.map((planet:Planet) => planet);
     });
     builder.addCase(getPlanet.fulfilled, (state, action) => {
-      state.selectedPlanet = action.payload;
+      state.selectedPlanet = action.payload as Planet;
   });
   },
 });
 
-// export const { increment, decrement, incrementByAmount } = counterSlice.actions
+const selectSelf = (state: any) => state.planets;
+export const selectPlanets = createSelector(selectSelf, (state) => {
+  return state.planets
+});
+
 export default planetSlice.reducer
