@@ -28,6 +28,22 @@ export const getPlanet = createAsyncThunk(
   }
 );
 
+export const createPlanet = createAsyncThunk(
+  "planets/create",
+  async (planet: Planet, thunkAPI) => {
+    const response = await (thunkAPI.extra as IPlanetModel).create(planet);
+    return response;
+  }
+);
+
+export const deletePlanet = createAsyncThunk(
+  "planets/delete",
+  async (orderFromSun: number, thunkAPI) => {
+    const response = await (thunkAPI.extra as IPlanetModel).delete(orderFromSun);
+    return response;
+  }
+);
+
 const planetSlice = createSlice({
   name: "planets",
   initialState,

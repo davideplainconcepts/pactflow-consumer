@@ -11,5 +11,7 @@ export const useUseCases = () => {
     return {
         getPlanet: planetUseCases.get.bind(planetUseCases),
         getAllPlanets: planetUseCases.getAll.bind(planetUseCases),
+        createPlanet: planetUseCases.create.bind(planetUseCases),
+        deletePlanet: planetUseCases.delete.bind(planetUseCases),
     }
 }
